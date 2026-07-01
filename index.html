@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +7,26 @@
 <title>Mrcie Kwenye Mic TV</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 background:#000;
-color:white;
+color:#fff;
 font-family:Arial,sans-serif;
 overflow:hidden;
 }
 
 header{
+height:60px;
 background:#b30000;
-padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:10px 20px;
 }
 
 .logo{
@@ -44,7 +51,7 @@ font-size:20px;
 }
 
 .player{
-height:calc(100vh - 120px);
+height:calc(100vh - 100px);
 }
 
 iframe{
@@ -53,15 +60,28 @@ height:100%;
 border:none;
 }
 
+.watermark{
+position:fixed;
+top:75px;
+right:15px;
+background:rgba(255,0,0,0.8);
+padding:10px 15px;
+font-size:18px;
+font-weight:bold;
+border-radius:10px;
+z-index:9999;
+}
+
 .ticker{
 position:fixed;
 bottom:0;
+left:0;
 width:100%;
 background:#111;
 color:#00ff00;
 padding:10px;
-white-space:nowrap;
 overflow:hidden;
+white-space:nowrap;
 }
 
 .ticker span{
@@ -74,40 +94,79 @@ animation:scroll 25s linear infinite;
 0%{transform:translateX(0);}
 100%{transform:translateX(-100%);}
 }
-</style>
-
-</head>
-
-<body>
+</style><body>
 
 <header>
-<div class="logo">📺 MRCIE KWENYE MIC TV</div>
-<div class="live">🔴 LIVE</div>
-<div id="clock"></div>
+  <div class="logo">📺 MRCIE KWENYE MIC TV</div>
+  <div class="live">🔴 LIVE</div>
+  <div id="clock"></div>
 </header>
 
-<div class="player">
-<iframe
-src="https://www.youtube.com/embed/videoseries?list=PLATZznebejzc&autoplay=1&loop=1&playlist=PLATZznebejzc"
-allow="autoplay; encrypted-media"
-allowfullscreen>
-</iframe>
+<div class="watermark">
+  MRCIE TV
+</div>
+
+<div class="player" id="player">
+  <iframe
+    src="https://www.youtube.com/embed/videoseries?list=PLATZznebejzc&autoplay=1&loop=1&playlist=PLATZznebejzc"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<div id="breakScreen" style="display:none;width:100%;height:calc(100vh - 100px);background:#000;color:#fff;text-align:center;padding-top:120px;">
+  <h1>📺 MRCIE KWENYE MIC TV</h1>
+  <h2>We'll Be Right Back</h2>
+  <h3>Break Time</h3>
+  <p id="countdown"></p>
 </div>
 
 <div class="ticker">
-<span>
-Welcome to Mrcie Kwenye Mic TV • Streaming 24/7 • Music • Reggae • Gengetone • Hip Hop • Urban Sounds • Subscribe and Share!
-</span>
-</div>
-
-<script>
-function updateClock(){
-const now=new Date();
-document.getElementById("clock").innerHTML=now.toLocaleTimeString();
+  <span>
+    Welcome to Mrcie Kwenye Mic TV • Streaming 24/7 • Reggae • Gengetone • Hip Hop • Urban Music • Subscribe • Share • Enjoy!
+  </span>
+</div><script>
+// Live clock
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString();
 }
-setInterval(updateClock,1000);
+setInterval(updateClock, 1000);
 updateClock();
+
+// TV break settings
+const BREAK_EVERY = 2 * 60 * 60 * 1000; // 2 hours
+const BREAK_LENGTH = 5 * 60; // 5 minutes
+
+function startBreak() {
+  document.getElementById("player").style.display = "none";
+  document.getElementById("breakScreen").style.display = "block";
+
+  let seconds = BREAK_LENGTH;
+
+  const timer = setInterval(() => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+
+    document.getElementById("countdown").textContent =
+      "Broadcast resumes in " +
+      mins + ":" + (secs < 10 ? "0" : "") + secs;
+
+    seconds--;
+
+    if (seconds < 0) {
+      clearInterval(timer);
+
+      document.getElementById("breakScreen").style.display = "none";
+      document.getElementById("player").style.display = "block";
+    }
+  }, 1000);
+}
+
+// Start a break every 2 hours
+setInterval(startBreak, BREAK_EVERY);
 </script>
 
 </body>
-  </html>
+</html>
