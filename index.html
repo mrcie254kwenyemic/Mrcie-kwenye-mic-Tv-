@@ -1,75 +1,259 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mrcie Kwenye Mic TV</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mrcie Kwenye Mic TV | Music 24/7</title>
 
-<style>
+  <!-- PART 2 CSS WILL GO HERE -->
+</head>
+
+<body>
+
+<header class="top-bar">
+  <div class="logo">
+    <img src="logo.png" alt="Mrcie Kwenye Mic TV Logo">
+    <h1>Mrcie Kwenye Mic TV</h1>
+  </div>
+
+  <div class="live-box">
+    <span class="live-dot"></span>
+    LIVE
+  </div>
+
+  <div id="clock">00:00:00</div>
+</header>
+
+<section class="hero">
+
+  <div class="video-container">
+
+    <iframe
+      src="https://www.youtube.com/embed?listType=playlist&list=YOUR_PLAYLIST_ID"
+      title="Mrcie Kwenye Mic TV"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</section>
+
+<section class="now-playing">
+
+<h2>🎵 Now Playing</h2>
+
+<p>Streaming Music 24 Hours a Day</p>
+
+</section>
+
+<section class="schedule">
+
+<h2>📅 Today's Schedule</h2>
+
+<ul>
+
+<li>06:00 AM – Morning Reggae</li>
+
+<li>10:00 AM – Afro Mix</li>
+
+<li>02:00 PM – Hip Hop Hour</li>
+
+<li>06:00 PM – Gospel Session</li>
+
+<li>09:00 PM – Dancehall Night</li>
+
+<li>12:00 AM – Overnight Mix</li>
+
+</ul>
+
+</section>
+
+<section class="social">
+
+<h2>Follow Mrcie Kwenye Mic TV</h2>
+
+<a href="#">Facebook</a>
+
+<a href="#">Instagram</a>
+
+<a href="#">TikTok</a>
+
+<a href="#">YouTube</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 Mrcie Kwenye Mic TV. All Rights Reserved.</p>
+
+</footer>
+
+<div class="ticker">
+
+<marquee behavior="scroll" direction="left">
+
+🎶 Welcome to Mrcie Kwenye Mic TV • Music 24/7 • Subscribe • Share • Enjoy the Best Music Nonstop!
+
+</marquee>
+
+</div>
+
+<!-- PART 3 JAVASCRIPT WILL GO HERE -->
+
+</body>
+</html><style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-background:#000;
-color:#fff;
-font-family:Arial,sans-serif;
-overflow:hidden;
+background:#050505;
+color:white;
 }
 
-header{
-height:60px;
-background:#b30000;
+.top-bar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:70px;
+background:#111;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px 20px;
+padding:0 20px;
+border-bottom:2px solid red;
+z-index:1000;
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.live{
+.logo img{
+width:50px;
+height:50px;
+border-radius:50%;
+}
+
+.logo h1{
+font-size:22px;
+color:#FFD700;
+}
+
+.live-box{
+display:flex;
+align-items:center;
 background:red;
 padding:8px 15px;
-border-radius:20px;
+border-radius:30px;
 font-weight:bold;
-animation:blink 1s infinite;
+animation:pulse 1s infinite;
 }
 
-@keyframes blink{
-50%{opacity:0.3;}
+.live-dot{
+width:12px;
+height:12px;
+background:white;
+border-radius:50%;
+margin-right:8px;
+}
+
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:.5;}
+100%{opacity:1;}
 }
 
 #clock{
 font-size:20px;
+font-weight:bold;
+color:#00ff66;
 }
 
-.player{
-height:calc(100vh - 100px);
+.hero{
+padding-top:90px;
+display:flex;
+justify-content:center;
+padding-left:15px;
+padding-right:15px;
 }
 
-iframe{
+.video-container{
+width:100%;
+max-width:1200px;
+aspect-ratio:16/9;
+background:black;
+border:3px solid gold;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(255,215,0,.5);
+}
+
+.video-container iframe{
 width:100%;
 height:100%;
 border:none;
 }
 
-.watermark{
-position:fixed;
-top:75px;
-right:15px;
-background:rgba(255,0,0,0.8);
-padding:10px 15px;
-font-size:18px;
-font-weight:bold;
-border-radius:10px;
-z-index:9999;
+.now-playing,
+.schedule,
+.social{
+width:90%;
+max-width:1200px;
+margin:30px auto;
+background:#111;
+padding:20px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(255,255,255,.1);
+}
+
+.now-playing h2,
+.schedule h2,
+.social h2{
+color:#FFD700;
+margin-bottom:15px;
+}
+
+.schedule ul{
+list-style:none;
+}
+
+.schedule li{
+padding:10px 0;
+border-bottom:1px solid #333;
+}
+
+.social a{
+display:inline-block;
+margin:8px;
+padding:10px 18px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:8px;
+transition:.3s;
+}
+
+.social a:hover{
+background:#FFD700;
+color:black;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+margin-top:30px;
 }
 
 .ticker{
@@ -77,96 +261,184 @@ position:fixed;
 bottom:0;
 left:0;
 width:100%;
-background:#111;
-color:#00ff00;
-padding:10px;
-overflow:hidden;
-white-space:nowrap;
+background:red;
+color:white;
+font-weight:bold;
+padding:10px 0;
+z-index:1000;
 }
 
-.ticker span{
-display:inline-block;
-padding-left:100%;
-animation:scroll 25s linear infinite;
+marquee{
+font-size:18px;
 }
 
-@keyframes scroll{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
+@media(max-width:768px){
+
+.logo h1{
+font-size:16px;
 }
-</style><body>
 
-<header>
-  <div class="logo">📺 MRCIE KWENYE MIC TV</div>
-  <div class="live">🔴 LIVE</div>
-  <div id="clock"></div>
-</header>
-
-<div class="watermark">
-  MRCIE TV
-</div>
-
-<div class="player" id="player">
-  <iframe
-    src="https://www.youtube.com/embed/videoseries?list=PLATZznebejzc&autoplay=1&loop=1&playlist=PLATZznebejzc"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
-</div>
-
-<div id="breakScreen" style="display:none;width:100%;height:calc(100vh - 100px);background:#000;color:#fff;text-align:center;padding-top:120px;">
-  <h1>📺 MRCIE KWENYE MIC TV</h1>
-  <h2>We'll Be Right Back</h2>
-  <h3>Break Time</h3>
-  <p id="countdown"></p>
-</div>
-
-<div class="ticker">
-  <span>
-    Welcome to Mrcie Kwenye Mic TV • Streaming 24/7 • Reggae • Gengetone • Hip Hop • Urban Music • Subscribe • Share • Enjoy!
-  </span>
-</div><script>
-// Live clock
-function updateClock() {
-  const now = new Date();
-  document.getElementById("clock").textContent =
-    now.toLocaleTimeString();
+#clock{
+font-size:15px;
 }
-setInterval(updateClock, 1000);
+
+.live-box{
+padding:6px 10px;
+font-size:13px;
+}
+
+}
+
+</style><script>
+
+// =========================
+// LIVE DIGITAL CLOCK
+// =========================
+function updateClock(){
+
+const now = new Date();
+
+let hours = now.getHours();
+let minutes = now.getMinutes();
+let seconds = now.getSeconds();
+
+hours = hours < 10 ? "0" + hours : hours;
+minutes = minutes < 10 ? "0" + minutes : minutes;
+seconds = seconds < 10 ? "0" + seconds : seconds;
+
+document.getElementById("clock").innerHTML =
+hours + ":" + minutes + ":" + seconds;
+
+}
+
+setInterval(updateClock,1000);
 updateClock();
 
-// TV break settings
-const BREAK_EVERY = 2 * 60 * 60 * 1000; // 2 hours
-const BREAK_LENGTH = 5 * 60; // 5 minutes
 
-function startBreak() {
-  document.getElementById("player").style.display = "none";
-  document.getElementById("breakScreen").style.display = "block";
+// =========================
+// PAGE TITLE BLINK
+// =========================
+const titles=[
+"🔴 LIVE - Mrcie Kwenye Mic TV",
+"🎵 Music 24/7",
+"📺 Mrcie Kwenye Mic TV"
+];
 
-  let seconds = BREAK_LENGTH;
+let titleIndex=0;
 
-  const timer = setInterval(() => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
+setInterval(function(){
 
-    document.getElementById("countdown").textContent =
-      "Broadcast resumes in " +
-      mins + ":" + (secs < 10 ? "0" : "") + secs;
+document.title=titles[titleIndex];
 
-    seconds--;
+titleIndex++;
 
-    if (seconds < 0) {
-      clearInterval(timer);
+if(titleIndex>=titles.length){
 
-      document.getElementById("breakScreen").style.display = "none";
-      document.getElementById("player").style.display = "block";
-    }
-  }, 1000);
+titleIndex=0;
+
 }
 
-// Start a break every 2 hours
-setInterval(startBreak, BREAK_EVERY);
-</script>
+},3000);
 
-</body>
-</html>
+
+// =========================
+// WELCOME MESSAGE
+// =========================
+setTimeout(function(){
+
+alert("🎉 Welcome to Mrcie Kwenye Mic TV - Enjoy Music 24/7!");
+
+},1500);
+
+
+// =========================
+// SMOOTH SCROLL
+// =========================
+document.querySelectorAll("a").forEach(anchor=>{
+
+anchor.addEventListener("click",function(e){
+
+const href=this.getAttribute("href");
+
+if(href.startsWith("#")){
+
+e.preventDefault();
+
+document.querySelector(href).scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+
+// =========================
+// LIVE VIEWER COUNTER
+// =========================
+let viewers=Math.floor(Math.random()*200)+100;
+
+const viewerBox=document.createElement("div");
+
+viewerBox.style.position="fixed";
+viewerBox.style.top="80px";
+viewerBox.style.right="20px";
+viewerBox.style.background="red";
+viewerBox.style.color="white";
+viewerBox.style.padding="10px 15px";
+viewerBox.style.borderRadius="10px";
+viewerBox.style.fontWeight="bold";
+viewerBox.style.zIndex="999";
+
+document.body.appendChild(viewerBox);
+
+setInterval(function(){
+
+viewers=viewers+Math.floor(Math.random()*5)-2;
+
+if(viewers<100){
+
+viewers=100;
+
+}
+
+viewerBox.innerHTML="👁 LIVE Viewers: "+viewers;
+
+},3000);
+
+
+// =========================
+// FADE IN EFFECT
+// =========================
+const sections=document.querySelectorAll("section");
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0px)";
+
+}
+
+});
+
+});
+
+sections.forEach(section=>{
+
+section.style.opacity="0";
+section.style.transform="translateY(40px)";
+section.style.transition="all 1s";
+
+observer.observe(section);
+
+});
+
+</script>
