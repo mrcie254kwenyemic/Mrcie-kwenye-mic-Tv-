@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mrcie Kwenye Mic TV</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mrcie Kwenye Mic TV</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
 
-    header {
-      background: red;
-      padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
+  header {
+    background: red;
+    padding: 14px;
+    font-size: 22px;
+    font-weight: bold;
+  }
 
-    .live {
-      color: lime;
-      font-weight: bold;
-      animation: blink 1s infinite;
-    }
+  .live {
+    color: lime;
+    animation: blink 1s infinite;
+    font-weight: bold;
+  }
 
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
 
-    .screen {
-      margin-top: 20px;
-    }
+  .screen {
+    margin-top: 15px;
+  }
 
-    iframe {
-      width: 92%;
-      height: 420px;
-      border: none;
-      border-radius: 10px;
-    }
+  iframe {
+    width: 92%;
+    height: 420px;
+    border: none;
+    border-radius: 10px;
+  }
 
-    .buttons {
-      margin-top: 15px;
-    }
+  .info {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #00ffcc;
+  }
 
-    button {
-      padding: 10px 15px;
-      margin: 5px;
-      background: #222;
-      color: white;
-      border: 1px solid #555;
-      cursor: pointer;
-    }
+  .buttons {
+    margin-top: 15px;
+  }
 
-    button:hover {
-      background: red;
-    }
+  button {
+    padding: 10px 14px;
+    margin: 5px;
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+    cursor: pointer;
+  }
 
-    footer {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #aaa;
-    }
-  </style>
+  button:hover {
+    background: red;
+  }
+</style>
 </head>
 
 <body>
@@ -73,27 +73,65 @@
   🔴 MRCIE KWENYE MIC TV <span class="live">LIVE</span>
 </header>
 
+<div class="info" id="scheduleText">
+  Loading schedule...
+</div>
+
 <div class="screen">
   <iframe id="tv"
-    src="https://www.youtube.com/embed/videoseries?list=PLATZznebejzc"
+    src=""
     allowfullscreen>
   </iframe>
 </div>
 
 <div class="buttons">
-  <button onclick="changeChannel('PLATZznebejzc')">Music 24/7</button>
-  <button onclick="changeChannel('PLATZznebejzc')">Live Stream</button>
+  <button onclick="setChannel('MORNING')">Morning Show</button>
+  <button onclick="setChannel('AFTERNOON')">Afternoon Hits</button>
+  <button onclick="setChannel('NIGHT')">Night Vibes</button>
 </div>
 
-<footer>
-  © 2026 Mrcie TV | Powered by GitHub Pages
-</footer>
-
 <script>
-function changeChannel(listId) {
-  document.getElementById("tv").src =
-    "https://www.youtube.com/embed/videoseries?list=" + listId;
+const channels = {
+  MORNING: "PLATZznebejzc",
+  AFTERNOON: "PLATZznebejzc",
+  NIGHT: "PLATZznebejzc"
+};
+
+// AUTO SCHEDULE BASED ON TIME
+function getAutoChannel() {
+  let hour = new Date().getHours();
+
+  if (hour >= 5 && hour < 12) return "MORNING";
+  if (hour >= 12 && hour < 18) return "AFTERNOON";
+  return "NIGHT";
 }
+
+function loadChannel(name) {
+  document.getElementById("tv").src =
+    "https://www.youtube.com/embed/videoseries?list=" + channels[name];
+
+  document.getElementById("scheduleText").innerText =
+    "Now Playing: " + name + " SHOW";
+}
+
+// MANUAL SWITCH
+function setChannel(name) {
+  loadChannel(name);
+}
+
+// AUTO START
+function autoStart() {
+  let current = getAutoChannel();
+  loadChannel(current);
+}
+
+// AUTO UPDATE EVERY 60 SECONDS
+setInterval(() => {
+  autoStart();
+}, 60000);
+
+// START ON LOAD
+autoStart();
 </script>
 
 </body>
