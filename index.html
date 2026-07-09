@@ -1,156 +1,287 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Mrcie Kwenye Mic TV</title>  <style>  
+  
+*{  
+margin:0;  
+padding:0;  
+box-sizing:border-box;  
+font-family:Arial,sans-serif;  
+}  
+  
+body{  
+background:#000;  
+color:#fff;  
+overflow-x:hidden;  
+}  
+  
+header{  
+position:sticky;  
+top:0;  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+padding:15px 20px;  
+background:#111;  
+border-bottom:3px solid red;  
+z-index:999;  
+}  
+  
+.logo{  
+display:flex;  
+align-items:center;  
+gap:12px;  
+}  
+  
+.logo img{  
+width:65px;  
+height:65px;  
+border-radius:50%;  
+border:3px solid gold;  
+}  
+  
+.logo h1{  
+color:gold;  
+font-size:28px;  
+}  
+  
+.live{  
+background:red;  
+padding:10px 18px;  
+border-radius:30px;  
+font-weight:bold;  
+animation:blink 1s infinite;  
+}  
+  
+@keyframes blink{  
+50%{  
+opacity:.3;  
+}  
+}  
+  
+#clock{  
+font-size:20px;  
+color:#00ff66;  
+font-weight:bold;  
+}  
+  
+.player{  
+position:relative;  
+width:96%;  
+margin:20px auto;  
+border:4px solid gold;  
+border-radius:18px;  
+overflow:hidden;  
+box-shadow:0 0 25px gold;  
+}  
+  
+iframe{  
+width:100%;  
+height:600px;  
+border:none;  
+}  
+  
+.watermark{  
+position:absolute;  
+top:15px;  
+left:15px;  
+background:rgba(0,0,0,.6);  
+padding:10px 15px;  
+border-radius:10px;  
+font-weight:bold;  
+z-index:10;  
+}  
+  
+.viewer{  
+position:absolute;  
+top:15px;  
+right:15px;  
+background:red;  
+padding:10px 15px;  
+border-radius:10px;  
+font-weight:bold;  
+z-index:10;  
+}  
+  
+.onair{  
+position:absolute;  
+bottom:15px;  
+left:15px;  
+background:#d40000;  
+padding:10px 20px;  
+border-radius:8px;  
+font-weight:bold;  
+z-index:10;  
+}  
+  
+section{  
+width:96%;  
+margin:20px auto;  
+background:#111;  
+padding:20px;  
+border-radius:15px;  
+}  
+  
+h2{  
+color:gold;  
+margin-bottom:15px;  
+}  
+  
+.now{  
+font-size:24px;  
+color:#00ff66;  
+font-weight:bold;  
+}  
+  
+.schedule p{  
+padding:10px 0;  
+border-bottom:1px solid #333;  
+}  
+  
+.channels{  
+display:flex;  
+flex-wrap:wrap;  
+justify-content:center;  
+gap:12px;  
+margin-top:20px;  
+}  
+  
+.channels button{  
+padding:12px 18px;  
+background:red;  
+color:white;  
+border:none;  
+border-radius:10px;  
+font-weight:bold;  
+cursor:pointer;  
+}  
+  
+.channels button:hover{  
+background:gold;  
+color:black;  
+}  
+</style>  </head>  <body>  <header>  <div class="logo">  <img src="logo.png" alt="Mrcie Kwenye Mic TV Logo">  <h1>Mrcie Kwenye Mic TV</h1>  </div>  <div class="live">  
+🔴 LIVE  
+</div>  <div id="clock"></div>  </header>  <div class="player">  <div class="watermark">  
+📺 MRCIE TV  
+</div>  <div class="viewer">  
+👁 1,245 Watching  
+</div>  <div class="onair">  
+📡 ON AIR  
+</div>  <iframe  
+src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_ID&autoplay=1&mute=1"  
+allow="autoplay; encrypted-media"  
+allowfullscreen>  
+</iframe>  </div>  <section>  <h2>🎵 NOW PLAYING</h2>  <p class="now">  
+Reggae • Afrobeat • Gengetone • Live Shows • Entertainment 24/7  
+</p>  </section><section class="schedule">  <h2>📅 TODAY'S PROGRAMS</h2>  <p>06:00 AM — Morning Reggae</p>  
+<p>08:00 AM — Gospel Inspiration</p>  
+<p>10:00 AM — Afrobeat Mix</p>  
+<p>12:00 PM — Gengetone Hits</p>  
+<p>02:00 PM — Artist Spotlight</p>  
+<p>03:00 PM — ☕ Short Break</p>  
+<p>03:05 PM — Mrcie Live Show</p>  
+<p>06:00 PM — Evening Music Mix</p>  
+<p>08:00 PM — Top 10 Countdown</p>  
+<p>10:00 PM — Night Vibes</p>  </section>  <section>  <h2>📺 CHANNELS</h2>  <div class="channels">  <button onclick="changeChannel('Music')">🎵 Music</button>
 
-<title>Mrcie Kwenye Mic TV</title>
+<button onclick="changeChannel('Reggae')">🌴 Reggae</button>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+<button onclick="changeChannel('Afrobeat')">🌍 Afrobeat</button>
 
-body{
-background:#000;
-color:#fff;
-text-align:center;
-}
+<button onclick="changeChannel('Gospel')">🙏 Gospel</button>
 
-header{
-background:#d60000;
-padding:15px;
-font-size:28px;
-font-weight:bold;
-}
+<button onclick="changeChannel('Live')">🔴 Live TV</button>
 
-.live{
-display:inline-block;
-background:red;
-padding:6px 12px;
-border-radius:20px;
-margin:10px;
-animation:blink 1s infinite;
-}
+<button onclick="showBreak()">☕ Short Break</button>
 
-@keyframes blink{
-50%{opacity:0;}
-}
+</div>  </section>  <section id="breakScreen" style="display:none;">  <h2>☕ SHORT BREAK</h2>  <p style="font-size:22px;">  
+We'll be back shortly...  
+</p>  <p>  
+Thank you for watching <strong>Mrcie Kwenye Mic TV</strong>.  
+</p>  <button onclick="hideBreak()"  
+style="  
+padding:12px 20px;  
+background:red;  
+color:white;  
+border:none;  
+border-radius:10px;  
+cursor:pointer;  
+font-size:18px;">
+▶ Return to Live TV
+</button>
 
-.player{
-width:100%;
-max-width:1000px;
-margin:auto;
-padding:10px;
-}
+</section>  <section>  <h2>📱 FOLLOW MRCIE KWENYE MIC TV</h2>  <div class="channels">  <button>▶ YouTube</button>
 
-iframe{
-width:100%;
-height:70vh;
-border:none;
-border-radius:10px;
-}
+<button>🎵 TikTok</button>
 
-.buttons{
-margin:20px;
-}
+<button>📘 Facebook</button>
 
-button{
-padding:12px 20px;
-margin:5px;
-border:none;
-border-radius:8px;
-font-size:18px;
-cursor:pointer;
-background:#ff0000;
-color:white;
-}
+<button>📸 Instagram</button>
 
-button:hover{
-background:#b30000;
-}
+<button>💬 WhatsApp</button>
 
-footer{
-margin-top:30px;
-padding:15px;
-background:#111;
-}
+</div>  </section>  <section>  <h2>📢 TV NEWS TICKER</h2>  <marquee behavior="scroll" direction="left">  🎤 Welcome to Mrcie Kwenye Mic TV • Broadcasting 24 Hours • Music • Entertainment • Live Shows • Stay Tuned • Thank you for watching.
 
-a{
-color:#00ff99;
-text-decoration:none;
-}
-</style>
-
-</head>
-
-<body>
-
-<header>
-📺 MRCIE KWENYE MIC TV
-</header>
-
-<div class="live">
-🔴 LIVE ON AIR
-</div>
-
-<div class="player">
-
-<iframe
-id="player"
-src="https://www.youtube.com/embed/videoseries?list=PLATZznebejzc&autoplay=1&mute=1"
-allow="autoplay; encrypted-media"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<div class="buttons">
-
-<button onclick="music()">🎵 Music</button>
-
-<button onclick="news()">📰 News</button>
-
-<button onclick="movies()">🎬 Movies</button>
-
-</div>
-
-<footer>
-
-<h3>Contact Us</h3>
-
-<p>
-WhatsApp:
-<a href="https://wa.me/254735051514">
-0735051514
-</a>
-</p>
-
-<p>© 2026 Mrcie Kwenye Mic TV</p>
-
-</footer>
-
-<script>
-
-function music(){
-document.getElementById("player").src=
-"https://www.youtube.com/embed/videoseries?list=PLATZznebejzc&autoplay=1";
-}
-
-function news(){
-document.getElementById("player").src=
-"https://www.youtube.com/embed/live_stream?channel=UCupvZG-5ko_eiXAupbDfxWw&autoplay=1";
-}
-
-function movies(){
-document.getElementById("player").src=
-"https://www.youtube.com/embed/videoseries?list=PLATZznebejzc";
-}
-
-</script>
-
-</body>
+</marquee>  </section><footer>  <marquee behavior="scroll" direction="left">  
+🎤 Welcome to Mrcie Kwenye Mic TV • Broadcasting 24/7 • Music • Entertainment • Live Shows • Thank you for watching.  
+</marquee>  </footer>  <script>  
+  
+// Live Clock  
+function updateClock(){  
+document.getElementById("clock").innerHTML =  
+new Date().toLocaleTimeString();  
+}  
+setInterval(updateClock,1000);  
+updateClock();  
+  
+// Change Channel  
+function changeChannel(channel){  
+document.querySelector(".now").innerHTML =  
+"Now Playing: " + channel;  
+}  
+  
+// Show Short Break  
+function showBreak(){  
+document.getElementById("breakScreen").style.display="block";  
+}  
+  
+// Hide Short Break  
+function hideBreak(){  
+document.getElementById("breakScreen").style.display="none";  
+}  
+  
+// ===== Demo Admin Login =====  
+const ADMIN_PASSWORD="mrcie123";  
+  
+function loginAdmin(){  
+  
+let pass=prompt("Enter Admin Password");  
+  
+if(pass===ADMIN_PASSWORD){  
+  
+alert("Welcome to Mrcie Kwenye Mic TV Control Room");  
+  
+}else{  
+  
+alert("Incorrect Password");  
+  
+}  
+  
+}  
+  
+// Automatic viewer counter  
+let viewers=1245;  
+  
+setInterval(function(){  
+  
+viewers+=Math.floor(Math.random()*5);  
+  
+document.querySelector(".viewer").innerHTML=  
+"👁 "+viewers+" Watching";  
+  
+},5000);  
+  
+</script>  </body>  
   </html>
